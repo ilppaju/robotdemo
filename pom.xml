@@ -6,21 +6,25 @@
   <name>OP Demo</name>
   <description>Demo for OP</description>
   
-<properties>
-       <robot.browser>chrome</robot.browser>     						<!-- Local default browser -->
-       <robot.tag></robot.tag>
-       <robot.remote_url></robot.remote_url> 						<!-- Selenium GRID hub address -->
-       <robot.url>https://www.op.fi</robot.url> 											<!-- SUT -->
-   </properties>
-
- <dependencies>
+    <properties>
+       <robot.browser>chrome</robot.browser>    <!-- Browser used in tests -->
+       <robot.tag></robot.tag>                  <!-- Tagging the test cases  -->
+       <robot.remote_url></robot.remote_url>    <!-- Selenium GRID hub address -->
+       <robot.url>https://www.op.fi</robot.url> <!-- SUT address -->
+    </properties>
+    <dependencies>
     <dependency>
 	    <groupId>com.github.markusbernhardt</groupId>
 	    <artifactId>robotframework-selenium2library-java</artifactId>
 	    <version>1.4.0.8</version>
 	    <scope>test</scope>
-</dependency>
-  </dependencies>
+     </dependency>
+     <dependency>
+         <groupId>joda-time</groupId>
+         <artifactId>joda-time</artifactId>
+         <version>2.9.6</version>
+     </dependency>
+ </dependencies>
   
   
   <build>
@@ -64,7 +68,7 @@
            <!--    <variableFile>${project.basedir}/src/main/resources/environment_variables.py</variableFile> -->
            </variableFiles>
            <variables>
-	           <variable>BROWSER:${robot.browser}</variable>-->
+	           <variable>BROWSER:${robot.browser}</variable>
 	           <variable>REMOTE_URL:${robot.remote_url}</variable>
 	           <variable>URL:${robot.url}</variable>
           </variables>

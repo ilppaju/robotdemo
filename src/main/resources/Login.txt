@@ -1,4 +1,6 @@
 *** Settings ***
+Documentation  Robot Framework demo of simple web UI testing with Selenium2Library
+
 Library  Selenium2Library  15s
 
 Test Timeout  2 minutes

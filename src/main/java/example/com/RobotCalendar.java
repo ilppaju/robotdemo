@@ -1,4 +1,4 @@
-package example.com
+package example.com;
 
 import org.joda.time.DateTime;
 import org.joda.time.DateTimeConstants;
@@ -16,7 +16,6 @@ import org.joda.time.format.DateTimeFormat;
  */
 public class RobotCalendar {
     public static final String ROBOT_LIBRARY_SCOPE = "TEST SUITE";
-    private static final RobotLogger log = new RobotLogger();
 
     /**
      * Palauttaa viikon numeron tästä hetkestä eteenpäin
@@ -40,7 +39,7 @@ public class RobotCalendar {
     /**
      * Palauttaa viikon numeron tästä hetkestä eteenpäin
      *
-     * @param num viikkoja eteenpäin
+     * @param luku viikkoja eteenpäin
      * @return viikon numero muodssa yyyyww esim. 201401
      */
     public static String viikkojaEteenpain(String luku) {
@@ -70,8 +69,6 @@ public class RobotCalendar {
     public static boolean onkoParillinenViikko(String viikko) {
         DateTime dt = DateTime.parse(viikko, DateTimeFormat.forPattern("yyyyww"));
         int wk = dt.getWeekOfWeekyear();
-
-        log.debug("viikkonumero: " + wk);
 
         return ((wk % 2) == 0);
     }
