@@ -7,7 +7,7 @@
   <description>Demo for OP</description>
   
     <properties>
-       <robot.browser>firefox</robot.browser>    <!-- Browser used in tests -->
+       <robot.browser>chrome</robot.browser>    <!-- Browser used in tests -->
        <robot.tag></robot.tag>                  <!-- Tagging the test cases  -->
        <robot.remote_url></robot.remote_url>    <!-- Selenium GRID hub address -->
        <robot.url>https://www.op.fi</robot.url> <!-- SUT address -->
