@@ -2,6 +2,7 @@
 Documentation  Robot Framework demo of simple web UI testing with Selenium2Library
 
 Library  Selenium2Library  15s
+Library  example.com.RobotCalendar
 
 Test Timeout  2 minutes
 Test Teardown  Close All Browsers
@@ -9,15 +10,15 @@ Test Teardown  Close All Browsers
 
 *** Variables ***
 ${REMOTE_URL}
-${URL}  http://www.op.fi  
-${BROWSER}  firefox
+${URL}  http://www.op.fi
+${BROWSER}  chrome
 
 *** Test Cases ***
 Login to OP online bank as a test user
   Given user opens a browser and goes to address "https://www.op.fi"
   When user types user id "123456"
   and user types password "7890"
-  and user presses OK
+  User presses Yes
   and system prompts for a key
   and user types key "12345"
   and user presses Jatka
@@ -28,7 +29,7 @@ Login to OP online bank as a test user
 
 User Opens a Browser and goes to address "${url}"
     ${remote}=  Get Variable Value  ${REMOTE_URL}  None
-    Run Keyword If  '${remote}'==''  Open Browser  ${url}  ${BROWSER}    None    
+    Run Keyword If  '${remote}'==''  Open Browser  ${url}  ${BROWSER}  browserOptions={"preferences":{"browser.startup.homepage":"about:blank","startup.homepage_welcome_url":"about:blank","startup.homepage_welcome_url.additional":"about:blank"}}
     Run Keyword Unless  '${remote}'==''  Open Browser  ${url}  ${BROWSER}    None  ${REMOTE_URL}
     
 User types user id "${id}" 
@@ -40,7 +41,7 @@ User types password "${password}"
   Wait Until Page Contains Element  salasana
   Input Text  salasana  ${password}  
 
-User presses OK
+User presses Yes
   Click Element  xpath=//input[@alt="OK"]  
 
 System prompts for a key
