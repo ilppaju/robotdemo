@@ -2,13 +2,6 @@
 Documentation  Robot Framework demo of simple web UI testing with Selenium2Library
 
 Library  Selenium2Library  15s
-Library  example.com.RobotCalendar
-
-Test Timeout  2 minutes
-Test Teardown  Close All Browsers
-Documentation  Robot Framework demo of simple web UI testing with Selenium2Library
-
-Library  Selenium2Library  15s
 
 Test Timeout  2 minutes
 Suite Teardown  Close All Browsers
