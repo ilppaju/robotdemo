@@ -13,7 +13,7 @@ ${BROWSER}  chrome
 
 *** Test Cases ***
 Login to OP online bank as a test user
-  Given user opens a browser and goes to address "https://www.op.fi"
+  Given user opens a browser and goes to address "${URL}"
   When user types user id "123456"
   and user types password "7890"
   and User presses Yes

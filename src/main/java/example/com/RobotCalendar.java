@@ -23,7 +23,7 @@ public class RobotCalendar {
      * @param num viikkoja eteenpäin
      * @return viikon numero muodssa yyyyww esim. 201401
      */
-    public static String viikkojaEteenpain(int num) {
+    public static String weeksForward(int num) {
         DateTime dt = new DateTime(DateTimeZone.forID("Europe/Helsinki"));
         DateTime dtNow = new DateTime(DateTimeZone.forID("Europe/Helsinki"));
         dt = dt.plusWeeks(num);
@@ -43,12 +43,12 @@ public class RobotCalendar {
      * @return viikon numero muodssa yyyyww esim. 201401
      */
     public static String viikkojaEteenpain(String luku) {
-    	return viikkojaEteenpain(Integer.parseInt(luku));
+    	return weeksForward(Integer.parseInt(luku));
         
     }
     
     
-    public static String viikkojaEteenpain(DateTime paivaMaara, int num) {
+    public static String weeksForward(DateTime paivaMaara, int num) {
         DateTime dt = new DateTime(paivaMaara, DateTimeZone.forID("Europe/Helsinki"));
         DateTime dtNow = new DateTime(paivaMaara, DateTimeZone.forID("Europe/Helsinki"));
         dt = dt.plusWeeks(num);
@@ -66,7 +66,7 @@ public class RobotCalendar {
      * @param viikko viikon id muodossa yyyyww
      * @return TRUE jos viikko on parillinen
      */
-    public static boolean onkoParillinenViikko(String viikko) {
+    public static boolean isEvenWeek(String viikko) {
         DateTime dt = DateTime.parse(viikko, DateTimeFormat.forPattern("yyyyww"));
         int wk = dt.getWeekOfWeekyear();
 
@@ -79,7 +79,7 @@ public class RobotCalendar {
      * @param num viikkoja taaksepäin
      * @return viikon numero muodossa yyyyww -> 201401
      */
-    public static String viikkojaTaaksepain(int num) {
+    public static String weeksBackward(int num) {
         DateTime dt = new DateTime(DateTimeZone.forID("Europe/Helsinki"));
         DateTime dtNow = new DateTime(DateTimeZone.forID("Europe/Helsinki"));
         dt = dt.minusWeeks(num);
@@ -97,11 +97,11 @@ public class RobotCalendar {
      * @param num viikkoja taaksepäin
      * @return viikon numero muodossa yyyyww -> 201401
      */
-    public static String viikkojaTaaksepain(String num) {
-        return viikkojaTaaksepain(Integer.parseInt(num));
+    public static String weeksBackward(String num) {
+        return weeksBackward(Integer.parseInt(num));
     }
     
-    public static String viikkojaTaaksepain(DateTime paivaMaara, int num) {
+    public static String weeksBackward(DateTime paivaMaara, int num) {
         DateTime dt = new DateTime(paivaMaara, DateTimeZone.forID("Europe/Helsinki"));
         DateTime dtNow = new DateTime(paivaMaara, DateTimeZone.forID("Europe/Helsinki"));
         dt = dt.minusWeeks(num);
@@ -116,7 +116,7 @@ public class RobotCalendar {
      *
      * @return
      */
-    public static String nykyHetki() {
+    public static String currentTime() {
         DateTime dt = new DateTime(DateTimeZone.forID("Europe/Helsinki"));
 
         return dt.toString("d.M.yyyy");
@@ -129,7 +129,7 @@ public class RobotCalendar {
      * @param paiva  maanantai = 1, tiistai=2 jne...
      * @return
      */
-    public static String annaViikonpaiva(String viikko, int paiva) {
+    public static String getWeekDay(String viikko, int paiva) {
         DateTime dt = DateTime.parse(viikko, DateTimeFormat.forPattern("yyyyww"));
 
         switch (paiva) {
@@ -165,7 +165,7 @@ public class RobotCalendar {
      * @param num päiviä eteenpäin
      * @return ajanhetki nykyhetkestä eteenpäin
      */
-    public static String paiviaEteenpain(int num) {
+    public static String daysForward(int num) {
         DateTime dt = new DateTime(DateTimeZone.forID("Europe/Helsinki"));
 
         return dt.plusDays(num).toString("d.M.yyyy");
@@ -177,7 +177,7 @@ public class RobotCalendar {
      * @param num päiviä eteenpäin
      * @return ajanhetki nykyhetkestä eteenpäin
      */
-    public static String paiviaTaaksepain(int num) {
+    public static String daysBackward(int num) {
         DateTime dt = new DateTime(DateTimeZone.forID("Europe/Helsinki"));
 
         return dt.minusDays(num).toString("d.M.yyyy");
@@ -191,7 +191,7 @@ public class RobotCalendar {
      * @param num päivien määrä eteenpäin
      * @return ajanhetki käyttäjän antamassa formaatissa
      */
-    public static String paiviaHetkestaEteenpain(String pvm, int num, String format) {
+    public static String daysFromMomentForward(String pvm, int num, String format) {
         DateTime dt = new DateTime(DateTimeZone.forID("Europe/Helsinki"));
         dt = DateTime.parse(pvm, DateTimeFormat.forPattern("dd.MM.yyyy"));
 
@@ -206,7 +206,7 @@ public class RobotCalendar {
      * @param format päivämäärän esitysmuoto esim. dd.MM.yyyy -> 04.12.2014
      * @return ajanhetki käyttäjän antamassa formaatissa
      */
-    public static String paiviaHetkestaTaaksepain(String pvm, int num, String format) {
+    public static String daysFromMomentBackward(String pvm, int num, String format) {
         DateTime dt = new DateTime(DateTimeZone.forID("Europe/Helsinki"));
         dt = DateTime.parse(pvm, DateTimeFormat.forPattern("dd.MM.yyyy"));
 
@@ -220,7 +220,7 @@ public class RobotCalendar {
      * @param format haluttu päivämäärän formaatti esim. yyyy-MM-dd
      * @return päiväys käyttäjän antamassa formaatissa.
      */
-    public static String muokkaaEsitystapaa(String pvm, String format) {
+    public static String modifyDateFormat(String pvm, String format) {
         DateTime dt = new DateTime(DateTimeZone.forID("Europe/Helsinki"));
         dt = DateTime.parse(pvm, DateTimeFormat.forPattern("dd.MM.yyyy"));
 
