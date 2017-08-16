@@ -8,7 +8,7 @@ Suite Teardown  Close All Browsers
 
 *** Variables ***
 ${REMOTE_URL}
-${URL}  http://www.op.fi
+${URL}
 ${BROWSER}  chrome
 
 *** Test Cases ***
